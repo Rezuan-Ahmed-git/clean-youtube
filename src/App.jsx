@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container, Stack } from '@mui/system';
 import Navbar from './components/navbar';
@@ -12,21 +13,22 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth={'lg'} sx={{ marginTop: 16 }}>
+      <Container maxWidth={'lg'} sx={{ my: 16 }}>
         <Navbar getPlaylistById={getPlaylistById} />
 
-        {playlistArray.length > 0 && (
-          <Stack direction={'row'} spacing={4}>
-            {playlistArray.map((item) => (
-              <PlaylistCardItem
-                key={item.id}
-                playlistThumbnail={item.playlistThumbnail}
-                playlistTitle={item.playlistTitle}
-                channelTitle={item.channelTitle}
-              />
+        <Grid container alignItems="stretch">
+          {playlistArray.length > 0 &&
+            playlistArray.map((item) => (
+              <Grid item xs={12} md={6} lg={4} mb={2}>
+                <PlaylistCardItem
+                  key={item.id}
+                  playlistThumbnail={item.playlistThumbnail}
+                  playlistTitle={item.playlistTitle}
+                  channelTitle={item.channelTitle}
+                />
+              </Grid>
             ))}
-          </Stack>
-        )}
+        </Grid>
       </Container>
     </>
   );

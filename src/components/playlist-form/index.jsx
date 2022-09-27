@@ -19,7 +19,6 @@ const PlaylistForm = ({ open, handleClose, getPlaylistId }) => {
       setState('');
       handleClose();
     }
-    console.log('Api', state);
   };
 
   return (

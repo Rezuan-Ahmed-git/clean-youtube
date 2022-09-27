@@ -1,4 +1,3 @@
-import { Key } from "@mui/icons-material";
 import axios from "axios";
 
 const key = import.meta.env.VITE_YOUTUBE_API_KEY;
@@ -9,7 +8,7 @@ const getPlaylistItem = async (playlistId, pageToken='', result=[]) => {
     const {data} = await axios.get(URL);
     result =  [...result,...data.items]
     if (data.nextPageToken) {
-        result =  getPlaylist(playlistId, data.nextPageToken, result);
+        result =  getPlaylistItem(playlistId, data.nextPageToken, result);
     }
 
     return result;
@@ -22,7 +21,7 @@ const getPlaylist = async (playlistId) => {
     const {data} = await axios.get(URL);
     let playlistItems = await getPlaylistItem(playlistId);
 
-    const { channelId, title: playlistTitle, description: playlistDescription, thumbnails, channelTitle } = data?.items[0]?.snippet;
+    const { channelId, title: playlistTitle, description: playlistDescription, thumbnails, channelTitle } = data?.items[0].snippet;
 
     playlistItems = playlistItems.map((item) => {
       const {
