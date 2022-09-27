@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -27,8 +29,20 @@ const Navbar = ({ getPlaylistById }) => {
         <Container maxWidth={'lg'}>
           <Toolbar>
             <Stack spacing={1} sx={{ flexGrow: 1 }}>
-              <Typography variant="h4">Clean Youtube</Typography>
-              <Typography variant="body1">By Rezuan Ahmed</Typography>
+              <Link
+                to="/"
+                component={RouterLink}
+                sx={{ textDecoration: 'none', color: 'black' }}
+              >
+                <Typography variant="h4">Clean Youtube</Typography>
+              </Link>
+              <Link
+                href="https://stacklearner.com"
+                target={'_blank'}
+                sx={{ textDecoration: 'none', color: 'black' }}
+              >
+                <Typography variant="body1">By Rezuan Ahmed</Typography>
+              </Link>
             </Stack>
             <Button onClick={handleClickOpen} variant="contained">
               Add Playlist
