@@ -15,7 +15,7 @@ const usePlaylists = () => {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  //save data in local storage===================
+
   useEffect(() => {
     const state = storage.get(STORAGE_KEY);
     if (state) {

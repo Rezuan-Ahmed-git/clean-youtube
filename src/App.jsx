@@ -5,8 +5,18 @@ import { Container } from '@mui/system';
 import Navbar from './components/navbar';
 import PlaylistCardItem from './components/playlist-card-item';
 import usePlaylists from './hooks/usePlaylists';
+import { useStoreActions } from 'easy-peasy';
+import { useEffect } from 'react';
+
+const playlistID = 'PL_XxuZqN0xVD0op-QDEgyXFA4fRPChvkl';
 
 const Homepage = ({ playlistArray }) => {
+  const playlist = useStoreActions((actions) => actions.playlist);
+
+  useEffect(() => {
+    playlist.getPlaylistData(playlistID);
+  }, []);
+
   return (
     <Container maxWidth={'lg'} sx={{ my: 16 }}>
       <Grid container alignItems="stretch">
