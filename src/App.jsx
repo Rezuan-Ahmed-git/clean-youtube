@@ -14,7 +14,7 @@ const Homepage = ({ playlistArray }) => {
   const playlist = useStoreActions((actions) => actions.playlist);
 
   useEffect(() => {
-    playlist.getPlaylistData(playlistID);
+    playlist.getPlaylist(playlistID);
   }, []);
 
   return (
